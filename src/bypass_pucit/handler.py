@@ -2,7 +2,7 @@ import platform
 import  subprocess
 
 import linuxHandler as lh, windowHandler as wh
-from bypass_pucit import ColorDTO
+import ColorDTO
 
 
 def setProxyGlobally():

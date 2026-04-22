@@ -5,8 +5,12 @@ import logging
 import presentation as pr
 import ColorDTO as cl
 import  handler
+import subprocess
+import   linuxHandler
+
 def main():
     pass
+PROXY="http://172.16.0.6:8080" # as sys wide 
 
 args=sys.argv[1:]
 if len(args)==0 or args[0]=="--help":
