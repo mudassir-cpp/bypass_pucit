@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "bypass-pucit"
 dynamic = ["version"]
-description = ''
+description = " As We can't access internet in our terminals / CLI ,this tool will allow you to use internet there by setting global proxies for all famous packages managers and CLI tools like git,pip,npm and others"
 readme = "README.md"
 requires-python = ">=3.8"
 license = "MIT"
@@ -27,9 +27,12 @@ classifiers = [
 dependencies = []
 
 [project.urls]
-Documentation = "https://github.com/U.N. Owen/bypass-pucit#readme"
-Issues = "https://github.com/U.N. Owen/bypass-pucit/issues"
-Source = "https://github.com/U.N. Owen/bypass-pucit"
+Documentation = "https://github.com/mudassir-cpp/bypass_pucit#readme"
+Issues = "https://github.com/mudassir-cpp/bypass_pucit/issues"
+Source = "https://github.com/mudassir-cpp/bypass_pucit"
+
+[project.script]
+bypass_pucit="bypass_pucit.main:main"
 
 [tool.hatch.version]
 path = "src/bypass_pucit/__about__.py"
