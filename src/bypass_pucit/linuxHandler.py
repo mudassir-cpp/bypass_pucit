@@ -6,29 +6,54 @@ import  presentation as pr
 import  dataDTO
 
 from ColorDTO import  Color as cl
-
+from ColorDTO import Color
 
 def setForLinux():
+    print(Color.GREEN + "Applying HTTP & HTTPs Proxies system-wide." + Color.RESET)
     setHttpLinux()
+
+    # now set for git
+
+    # set pip
+
+    #set for NPM
+
+    # SET for snap
+
+    #set for dnf 
+    print(Color.BLUE + "Changes applied successfully. Close this terminal and start a new one to take effect." + Color.RESET)
 
 
 
 
 # unset all proxies
 def unsetAllProxiesForLinux():
+    print(Color.GREEN + "Applying HTTP & HTTPs Proxies system-wide." + Color.RESET)
     unsetHttpLinux()
+    print(Color.BLUE + "Changes applied successfully. Close this terminal and start a new one to take effect." + Color.RESET)
 
-def runSubProcessWithStream(ls:List[str],shouldPrint:bool=True)->str:
-    process=subprocess.Popen(
+
+
+def runSubProcessWithStream(ls: List[str], shouldPrint: bool = True) -> str:
+    process = subprocess.Popen(
         ls,
-        stdout=subprocess.PIPE, # stream the output to PIPE like |
-        text=True # decode the bytes and Txt
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True
     )
-    res:str =""
-    for ln in process.stdout:
-        res += ln
+
+    res = ""
+
+    for line in process.stdout:
+        res += line
         if shouldPrint:
-            print(ln.strip) # print the output stream
+            print(line.strip())
+
+    # process.stdout.
+
+    # wait for process to fully finish
+    process.wait()
+
     return res
 
 def getEnvVar(var:str)->str:
@@ -43,7 +68,7 @@ def getEnvVar(var:str)->str:
 def setHttpLinux():
 
     SHELL: str = getEnvVar("SHELL")
-    print(cl.RED + SHELL + cl.RESET)
+    # print(cl.RED + SHELL + cl.RESET)
     if SHELL == "NONE":
         pr.showError("NO SHELL configured or is'nt at default location")
         return
@@ -78,24 +103,26 @@ def setHttpLinux():
     # up =added proxy
 
     # tee the toUpdate File using sub proccess
-    subprocess.run(
+    p=subprocess.run(
         ['tee',path],
         input=toUpateFile.encode(),
         check=True,
+        stdout=subprocess.DEVNULL,
     )
+
     #GPT: can't source current SHELL session using python
     # so make a new SHELL prcess source it there and replace currnet shell session with new one
-    subprocess.run(["zsh", "-c", "source ~/.zshrc && exec zsh"])
-
+    subprocess.run(
+        ["zsh", "-c", "source ~/.zshrc && exec zsh"],
+        stdin=subprocess.DEVNULL,
+    )
 
 
 
 
 # jst filter out http related things bro
 def unsetHttpLinux():
-    pr.showError("here to remove")
     SHELL: str = getEnvVar("SHELL")
-    print(cl.RED + SHELL + cl.RESET)
     if SHELL == "NONE":
         pr.showError("NO SHELL configured or is'nt at default location")
         return
@@ -125,10 +152,19 @@ def unsetHttpLinux():
         ['tee', path],
         input=toUpateFile.encode(),
         check=True,
+        stdout=subprocess.DEVNULL
     )
 
     # GPT: can't source current SHELL session using python
-    # so make a new SHELL prcess source it there and replace currnet shell session with new one
-    subprocess.run(["zsh", "-c", "source ~/.zshrc && exec zsh"])
+    # # so make a new SHELL prcess source it there and replace currnet shell session with new one
+    if SHELL == "zsh":
+        subprocess.run(["zsh", "-c", "source ~/.zshrc && exec zsh"],
+                       stdin=subprocess.DEVNULL,)
+    else:
+        subprocess.run(["bash", "-c", "source ~/.bashrc && exec bash"],
+                       stdout=subprocess.DEVNULL,)
 
+    # for current session jst unset is enough
+    os.environ.pop("http_proxy",None)
+    os.environ.pop("https_proxy",None)
 
