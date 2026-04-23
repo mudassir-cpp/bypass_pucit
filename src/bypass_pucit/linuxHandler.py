@@ -20,7 +20,9 @@ def setForLinux():
 
     # SET for snap
 
-    #set for dnf 
+    #set for dnf
+
+
     print(Color.BLUE + "Changes applied successfully. Close this terminal and start a new one to take effect." + Color.RESET)
 
 
@@ -28,9 +30,19 @@ def setForLinux():
 
 # unset all proxies
 def unsetAllProxiesForLinux():
+    # Unset HTTP configs
     print(Color.GREEN + "Applying HTTP & HTTPs Proxies system-wide." + Color.RESET)
     unsetHttpLinux()
     print(Color.BLUE + "Changes applied successfully. Close this terminal and start a new one to take effect." + Color.RESET)
+
+    # git
+
+
+    # pip
+
+
+    # npm
+
 
 
 
@@ -61,8 +73,6 @@ def getEnvVar(var:str)->str:
     if res is None:
         return "NONE"
     return res
-
-
 
 
 def setHttpLinux():
@@ -117,7 +127,21 @@ def setHttpLinux():
         stdin=subprocess.DEVNULL,
     )
 
+def setGitLinux():
+    #TODO
 
+    pass
+
+
+def setPipLinux():
+    #TODO
+
+
+    pass
+
+def setNpmLinux():
+    #TODO
+    pass
 
 
 # jst filter out http related things bro
@@ -167,4 +191,18 @@ def unsetHttpLinux():
     # for current session jst unset is enough
     os.environ.pop("http_proxy",None)
     os.environ.pop("https_proxy",None)
+
+
+def unsetGitLinux():
+    #TODO
+    pass
+
+
+def unsetPipLinux():
+    #TODO
+    pass
+
+def unsetNpmLinux():
+    #TODO
+    pass
 
