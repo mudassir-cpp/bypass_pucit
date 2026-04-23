@@ -1,0 +1,1 @@
+PROXY="http://172.16.0.6:8080" # as sys wide
