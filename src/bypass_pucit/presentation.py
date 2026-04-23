@@ -12,3 +12,7 @@ def httpFailure(whatNotFound:str):
 def showError(errStr:str):
     print(cl.RED+errStr+cl.RESET)
     print(cl.RESET)
+
+
+def showHowToContributeInTool():
+    print("iSTRHA contribute krna haii")

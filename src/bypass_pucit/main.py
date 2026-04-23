@@ -10,7 +10,13 @@ import   linuxHandler
 
 def main():
     pass
-PROXY="http://172.16.0.6:8080" # as sys wide 
+
+if platform.system()!='Linux':
+    pr.showError(platform.system()+" is Not Supported yet")
+    pr.showHowToContributeInTool()
+    exit(0)
+
+PROXY="http://172.16.0.6:8080" # as sys wide
 
 args=sys.argv[1:]
 if len(args)==0 or args[0]=="--help":
@@ -18,7 +24,7 @@ if len(args)==0 or args[0]=="--help":
 elif args[0]=="set":
     handler.setProxyGlobally()
 elif args[0]=="unset":
-    handler.rollBackItBro()
+    handler.unsetProxyGlobally()
 else:
     print(cl.Color.RED+"No Such Command: plz Respect Parameters",cl.Color.RESET)
     print(cl.Color.YELLOW+"type "+cl.Color.GREEN,"bypass_pucit --help"+cl.Color.YELLOW+ " to get Following Guide ",cl.Color.RESET)

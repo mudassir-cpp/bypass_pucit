@@ -23,8 +23,9 @@ def setProxyGlobally():
 
 
 
-def rollBackItBro():
+def unsetProxyGlobally():
     if platform.system()=="Linux":
+        lh.unsetAllProxiesForLinux()
         pass
 
 
