@@ -1,18 +1,18 @@
-from ColorDTO import Color as cl
+from .messages import print_error, print_help, print_info
+
+
 def showHelpPage():
-    print("Will print help page")
+    print_help()
 
 
-def httpFailure(whatNotFound:str):
-    print(cl.RED+f"{whatNotFound} SHELL is NOT SUPPORTED so can't set http|https proxy ")
-    print("All tools depending on http|https methods wouldn't access internet i.e pub.dev")
-    print(cl.RESET)
+def httpFailure(whatNotFound):
+    print_error("{0} shell is not supported for proxy file updates.".format(whatNotFound))
+    print_info("The tool will still configure proxy settings where it can.")
 
 
-def showError(errStr:str):
-    print(cl.RED+errStr+cl.RESET)
-    print(cl.RESET)
+def showError(errStr):
+    print_error(errStr)
 
 
 def showHowToContributeInTool():
-    print("iSTRHA contribute krna haii")
+    print_info("Extend support by adding a backend in src/bypass_pucit/platforms.")

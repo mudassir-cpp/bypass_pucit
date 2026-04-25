@@ -1,0 +1,17 @@
+bypass_pucit run guide
+
+Recommended:
+  bypass_pucit set --proxy http://172.16.0.6:8080
+  bypass_pucit unset
+
+From source checkout:
+  python3 -m bypass_pucit.main set --proxy http://172.16.0.6:8080
+  python3 -m bypass_pucit.main unset
+
+Direct script run:
+  python3 src/bypass_pucit/main.py set --proxy http://172.16.0.6:8080
+  python3 src/bypass_pucit/main.py unset
+
+Notes:
+  - Linux relaunches through sudo when needed.
+  - Windows requests UAC/admin elevation when needed.

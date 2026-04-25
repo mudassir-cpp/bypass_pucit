@@ -31,7 +31,7 @@ Documentation = "https://github.com/mudassir-cpp/bypass_pucit#readme"
 Issues = "https://github.com/mudassir-cpp/bypass_pucit/issues"
 Source = "https://github.com/mudassir-cpp/bypass_pucit"
 
-[project.script]
+[project.scripts]
 bypass_pucit="bypass_pucit.main:main"
 
 [tool.hatch.version]

@@ -1,3 +1,5 @@
-# SPDX-FileCopyrightText: 2026-present U.N. Owen <gem920se@gmail.com>
-#
-# SPDX-License-Identifier: MIT
+from pathlib import Path
+import sys
+
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))

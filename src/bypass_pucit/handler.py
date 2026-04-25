@@ -1,34 +1,12 @@
-import platform
-import  subprocess
-
-import linuxHandler as lh, windowHandler as wh
-import ColorDTO
+from .cli import main
 
 
-def setProxyGlobally():
-    # setup the whole environment
-    # setup http and https proxy
-
-    if platform.system()=="Linux":
-        # check whether it is running bash or ZSH
-        lh.setForLinux()
-    elif platform.system()=="Windows":
-        wh.setForWindow()
-    else:
-        print(ColorDTO.Color.RED+"OPERATING SYSTEM NOT SUPPORTED")
-
-
-
-
-
+def setProxyGlobally(proxy_url=None):
+    arguments = ["set"]
+    if proxy_url:
+        arguments.extend(["--proxy", proxy_url])
+    return main(arguments)
 
 
 def unsetProxyGlobally():
-    if platform.system()=="Linux":
-        lh.unsetAllProxiesForLinux()
-        pass
-
-
-
-
-
+    return main(["unset"])
